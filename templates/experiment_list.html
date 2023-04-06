@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='dashboard-analytics-content' style = 'display:flex ;justify-content : space-evenly; overflow:hidden;min-height:800px' >
+  {% if experiments %}
+    {% for exp in experiments %}
+    <a href = "{% url 'experiment_detail' exp.pk %}">
+        <div class="card" style="width: 18rem;margin:16px 0">
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top" alt="Fiber Image"/>
+            <div class="card-body">
+                <p class="card-text">{{exp.name}}</p>
+            
+                <div class = 'btn btn-primary'>
+                More Details
+                </div>
+            </div>
+
+        </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <h1>Ops, You have no experiments.</h1>
+    {% endif %}
+
+    
+<style>
+  .dashboard-analytics-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .card {
+    width: calc(33.33% - 32px);
+    margin: 16px;
+  }
+  .card-img-top{
+    height: 250px;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .card {
+      width: calc(50% - 32px);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .card {
+      width: 100%;
+    }
+  }
+</style>
+</div>
+
+{% endblock content %}
