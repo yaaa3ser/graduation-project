@@ -9,6 +9,8 @@ packages = [{include = "graduation_project"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^4.2"
+drf-yasg = "^1.21.5"
+djangorestframework = "^3.14.0"
 
 
 [build-system]

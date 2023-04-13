@@ -31,7 +31,7 @@ class Chemicals(models.Model):
     symbol = models.CharField(max_length=1000)
 
 class Steps(models.Model):
-    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE)
+    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name='steps')
     step = models.CharField(max_length=1000)
     
     def __str__(self) -> str:

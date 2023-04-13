@@ -2,8 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from .models import Experiment, Equipment, Chemicals, Steps
 from .forms import ExperimentForm
+from .serializers import ExperimentSerializer
+from rest_framework import generics
+from drf_yasg.utils import swagger_auto_schema
 
-
+class El8alyView(View):
+    def get(self, request):
+        return render(request, '3mmena.html')
 class ExperimentCreateView(View):
     def get(self, request):
         form = ExperimentForm()
@@ -43,3 +48,12 @@ class ExperimentListView(View):
     def get(self, request):
         experiments = Experiment.objects.all()
         return render(request, 'experiment_list.html', {'experiments': experiments})
+    
+# to add swagger documentation to the API
+class ApiExperimentView(generics.ListCreateAPIView):
+    serializer_class = ExperimentSerializer
+    queryset = Experiment.objects.all()
+
+class ApiExperimentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ExperimentSerializer
+    queryset = Experiment.objects.all()
