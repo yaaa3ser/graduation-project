@@ -4,35 +4,90 @@ class Experiment(models.Model):
     name = models.CharField(max_length=1000)
     observation = models.CharField(max_length=1000)
     conclusion = models.CharField(max_length=1000)
+    
+    def __str__(self) -> str:
+        return self.name
 
 class Equipment(models.Model):
     EQUIPMENT_CHOICES = (
-        ('دورق', 'دورق'),
-        ('موقد', 'موقد'),
-        ('ورقة عباد شمس', 'ورقة عباد شمس'),
-        ('سحاحة', 'سحاحة'),
-        ('ماصة', 'ماصة'),
-        ('ولاعة', 'ولاعة'),
-        ('انبوبة اختبار', 'انبوبة اختبار'),
+        ('Beaker', 'Beaker'),
+        ('Bunsen Burner', 'Bunsen Burner'),
+        ('Sunflower Paper', 'Sunflower Paper'),
+        ('Pipette', 'Pipette'),
+        ('Test Tube', 'Test Tube'),
+        ('Lighter', 'Lighter'),
+        ('Test Tube', 'Test Tube')
+        # add more choices here
         
     )
     experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE,related_name='equipments')
     name = models.CharField(max_length=1000, choices=EQUIPMENT_CHOICES)
+    
+    def __str__(self) -> str:
+        return self.name
 
 class Chemicals(models.Model):
     CHEMICALS_CHOICES = (
-        ('ماء', 'ماء'),
-        ('محلول نشا', 'محلول نشا'),
-        ('محلول لوغول', 'محلول لوغول'),
+        ('Water', 'Water'),
+        ('Starch', 'Starch'),
+        ('Sodium Hydroxide', 'Sodium Hydroxide'),
+        # add more choices here
         
     )
     experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE,related_name='chemicals')
     name = models.CharField(max_length=1000, choices=CHEMICALS_CHOICES)
     symbol = models.CharField(max_length=1000)
-
-class Steps(models.Model):
-    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name='steps')
-    step = models.CharField(max_length=1000)
     
     def __str__(self) -> str:
-        return self.step
+        return self.name
+
+class Steps(models.Model):
+    VERBS = (
+        ('Boil', 'Boil'),
+        ('Add', 'Add'),
+        ('Light', 'Light'),
+        # add more choices here
+    )
+
+    EQUIPMENT = (
+        ('Beaker', 'Beaker'),
+        ('Bunsen Burner', 'Bunsen Burner'),
+        ('Sunflower Paper', 'Sunflower Paper'),
+        ('Pipette', 'Pipette'),
+        ('Test Tube', 'Test Tube'),
+        ('Lighter', 'Lighter'),
+        ('Test Tube', 'Test Tube')
+        # add more choices here
+    )
+    
+    CHEMICALS = (
+        ('Water', 'Water'),
+        ('Starch', 'Starch'),
+        ('Sodium Hydroxide', 'Sodium Hydroxide'),
+        # add more choices here
+    )
+
+    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name='steps')
+    verb = models.CharField(max_length=100, choices=VERBS)
+    quantity = models.IntegerField(blank=True, null=True)
+    chemical = models.CharField(max_length=100, choices=CHEMICALS, blank=True, null=True)
+    equipment = models.CharField(max_length=100, choices=EQUIPMENT)
+
+    def __str__(self) -> str:
+        if not self.quantity:
+            self.quantity = ''
+        if not self.chemical:
+            self.chemical = ''
+        if not self.equipment:
+            self.equipment = ''
+        return f'{self.verb} {self.quantity} {self.chemical} to {self.equipment}'
+    
+    @property
+    def formatted_step(self) -> str:
+        if not self.quantity:
+            self.quantity = ''
+        if not self.chemical:
+            self.chemical = ''
+        if not self.equipment:
+            self.equipment = ''
+        return f'{self.verb} {self.quantity} {self.chemical} to {self.equipment}'

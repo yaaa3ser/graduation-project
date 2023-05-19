@@ -23,7 +23,14 @@ class ExperimentCreateView(View):
             steps = request.POST.getlist('steps')
             equipment_objects = [Equipment(experiment=experiment, name=name) for name in equipment_names[0].split(',') if name]
             chemicals_objects = [Chemicals(experiment=experiment, name=name) for name in chemicals_names[0].split(',') if name]
-            steps_objects = [Steps(experiment=experiment, step=step) for step in steps[1].split(',') if step]
+            steps = steps[0].split(';')
+            print(steps)
+            steps_objects = []
+            for step in steps:
+                if step:
+                    step = step.split(',')
+                    step_object = Steps(experiment=experiment, verb=step[0], quantity=step[1], chemical=step[2], equipment=step[3])
+                    steps_objects.append(step_object)
             experiment.save()
             Equipment.objects.bulk_create(equipment_objects)
             Chemicals.objects.bulk_create(chemicals_objects)
@@ -41,7 +48,7 @@ class ExperimentDetailView(View):
         steps = Steps.objects.filter(experiment=experiment)
         equipment_names = [e.name for e in equipment]
         chemical_names = [c.name for c in chemical]
-        steps_names = [s.step for s in steps]
+        steps_names = [s.formatted_step for s in steps]
         return render(request, 'experiment_detail.html', {'experiment': experiment, 'equipment': equipment_names, 'chemicals': chemical_names, 'steps': steps_names})
 
 class ExperimentListView(View):

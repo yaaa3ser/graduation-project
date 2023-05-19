@@ -14,8 +14,3 @@ class ChemicalsForm(forms.ModelForm):
     class Meta:
         model = Chemicals
         fields = ['name', 'symbol']
-
-class StepsForm(forms.ModelForm):
-    class Meta:
-        model = Steps
-        fields = ['step']

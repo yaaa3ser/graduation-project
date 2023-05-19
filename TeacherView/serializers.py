@@ -14,10 +14,12 @@ class ChemicalsSerializer(serializers.ModelSerializer):
         fields = ['name',]
 
 class StepsSerializer(serializers.ModelSerializer):
-    step = serializers.CharField()
+    verb = serializers.CharField()
+    equipment = serializers.CharField()
+    chemicals = serializers.CharField()
     class Meta:
-        model = Equipment
-        fields = ['step',]
+        model = Steps
+        fields = ['verb', 'equipment', 'chemicals']
 class ExperimentSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     equipments = EquipmentSerializer(many=True)

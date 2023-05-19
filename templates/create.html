@@ -3,75 +3,100 @@
 {% block content %}
     <form method="post">
     {% csrf_token %}
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-9">
         <label for="name">Experiment Name:</label>
         <input type="text" class="form-control" id="name" name="name">
     </div>
-    <div class="form-group col-md-6">
+    </br>
+    <div class="form-group col-md-9">
       <label for="equipment_select">Equipment:</label>
       <div class="input-group">
           <select name="equipment_select" id="equipment_select" class="form-control">
               <option value="">Choose equipment...</option>
-              <option value="دورق">دورق</option>
-              <option value="موقد">موقد</option>
-              <option value="ورقة عباد شمس">ورقة عباد شمس</option>
-              <option value="سحاحة">سحاحة</option>
-              <option value="ولاعة">ولاعة</option>
-              <option value="ماصة">ماصة</option>
-              <option value="انبوبة اختبار">انبوبة اختبار</option>
+                <option value="Beaker">Beaker</option>
+                <option value="Bunsen Burner">Bunsen Burner</option>
+                <option value="Sunflower Paper">Sunflower Paper</option>
+                <option value="Pipette">Pipette</option>
+                <option value="Test Tube">Test Tube</option>
+                <option value="Lighter">Lighter</option>
+                <option value="Test Tube">Test Tube</option>
               <!-- Add more options here -->
           </select>
           <div class="input-group-append">
-              <button type="button" id="add-equipment" class="btn btn-primary">Add</button>
+              <button type="button" style="background-color: #5D3891;" id="add-equipment" class="btn btn-primary">Add</button>
           </div>
       </div>
       <ul id="equipment-list"></ul>
       <input type="hidden" name="equipment" id="equipment-input">
   </div>
-  <div class="form-group col-md-6">
+    </br>
+  <div class="form-group col-md-9">
       <label for="chemical_select">Chemicals:</label>
       <div class="input-group">
           <select name="chemical_select" id="chemical_select" class="form-control">
               <option value="">Choose chemical...</option>
-              <option value="ماء">ماء</option>
-              <option value="محلول نشا">محلول نشا</option>
-              <option value="محلول لوغول">محلول لوغول</option>
-              <option value="محلول كلوريد">محلول كلوريد</option>
-              <option value="محلول كبريتات">محلول كبريتات</option>
+                <option value="Water">Water</option>
+                <option value="Starch">Starch</option>
+                <option value="Sodium Hydroxide">Sodium Hydroxide</option>
               <!-- Add more options here -->
           </select>
           <div class="input-group-append">
-              <button type="button" id="add-chemical" class="btn btn-primary">Add</button>
+              <button type="button" style="background-color: #5D3891;" id="add-chemical" class="btn btn-primary">Add</button>
           </div>
       </div>
       <ul id="chemical-list"></ul>
       <input type="hidden" name="chemicals" id="chemicals-input">
   </div>
-  
-    <div class="form-group col-md-6">
-      <label for="steps">Steps: </label>
-      <div class="input-group">
-          <input type="text" name="steps" class="form-control" id="steps">
-          <div class="input-group-append">
-              <button type="button" id="add-step" class="btn btn-primary">Add</button>
-          </div>
-      </div>
-      <ul id="steps-list"></ul>
-      <input type="hidden" name="steps" id="steps-input">
-  </div>
-    {% comment %} <div class="form-group col-md-6">
-        <label for="steps">Steps:</label>
-        <textarea class="form-control" id="steps" name="steps" rows="4" style="resize: none;"></textarea>
-    </div>   {% endcomment %}
-    <div class="form-group col-md-6">
+    </br>
+  <div class="form-group col-md-9">
+    <label for="step">Steps:</label>
+    <div class="input-group">
+        <select name="verb" class="form-control">
+            <option value="">Choose verb...</option>
+            <option value="Boil">Boil</option>
+            <option value="Add">Add</option>
+            <option value="Light">Light</option>
+            <!-- Add more options here -->
+        </select>
+        <input type="number" name="quantity" class="form-control" placeholder="Quantity">
+        <select name="chemical" class="form-control">
+            <option value="">Choose chemical...</option>
+            <option value="Water">Water</option>
+            <option value="Starch">Starch</option>
+            <option value="Sodium Hydroxide">Sodium Hydroxide</option>
+            <!-- Add more options here -->
+        </select>
+        <select name="equipment" class="form-control">
+            <option value="">Choose equipment...</option>
+            <option value="Beaker">Beaker</option>
+            <option value="Bunsen Burner">Bunsen Burner</option>
+            <option value="Sunflower Paper">Sunflower Paper</option>
+            <option value="Pipette">Pipette</option>
+            <option value="Test Tube">Test Tube</option>
+            <option value="Lighter">Lighter</option>
+            <option value="Test Tube">Test Tube</option>
+            <!-- Add more options here -->
+        </select>
+        <div class="input-group-append">
+            <button type="button" style="background-color: #5D3891;" id="add-step" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+    <ul id="step-list"></ul>
+    <input type="hidden" name="steps" id="steps-input">
+</div>
+    </br>
+    <div class="form-group col-md-9">
         <label for="observation">Observation:</label>
         <input type="text" class="form-control" id="observation" name="observation">
     </div>  
-    <div class="form-group col-md-6">
+    </br>
+    <div class="form-group col-md-9">
         <label for="conclusion">Conclusion:</label>
         <input type="text" class="form-control" id="conclusion" name="conclusion">
     </div> 
-    <button type="submit" class="btn btn-primary col-md-6 mt-2 ">Save</button>
+    </br>
+    <button type="submit" class="btn btn-primary col-md-9 mt-2" style="height: 50px; font-size: 1.2em; background-color: #5D3891;">Save</button>
+
 </form>
 </div>
 
@@ -81,7 +106,7 @@
     const addStepBtn = document.querySelector('#add-step');
     const equipmentList = document.querySelector('#equipment-list');
     const chemicalList = document.querySelector('#chemical-list');
-    const stepsList = document.querySelector('#steps-list');
+    const stepsList = document.querySelector('#step-list');
     const equipmentInput = document.querySelector('#equipment-input');
     const chemicalsInput = document.querySelector('#chemicals-input');
     const stepsInput = document.querySelector('#steps-input');
@@ -103,29 +128,47 @@
         }
     });
     addChemicalBtn.addEventListener('click', () => {
-      const chemicalSelect = document.querySelector('#chemical_select');
-      const chemicalValue = chemicalSelect.value;
-      const chemicalText = chemicalSelect.options[chemicalSelect.selectedIndex].text;
-      
-      if (chemicalValue) {
-          const li = document.createElement('li');
-          li.textContent = chemicalText;
-          chemicalList.appendChild(li);
-          chemicalsValues.push(chemicalValue);
-          chemicalsInput.value = chemicalsValues.join(',');
-          chemicalSelect.value = '';
-      }
-  });
-    addStepBtn.addEventListener('click', () => {
-      const name = document.querySelector('input[name="steps"]').value.trim();
-      if (name) {
-        const li = document.createElement('li');
-        li.textContent = name;
-        stepsList.appendChild(li);
-        stepsValues.push(name);
-        stepsInput.value = stepsValues.join(',');
-        document.querySelector('input[name="steps"]').value = '';
-      }
+        const chemicalSelect = document.querySelector('#chemical_select');
+        const chemicalValue = chemicalSelect.value;
+        const chemicalText = chemicalSelect.options[chemicalSelect.selectedIndex].text;
+        
+        if (chemicalValue) {
+            const li = document.createElement('li');
+            li.textContent = chemicalText;
+            chemicalList.appendChild(li);
+            chemicalsValues.push(chemicalValue);
+            chemicalsInput.value = chemicalsValues.join(',');
+            chemicalSelect.value = '';
+        }
     });
-  </script>
+    addStepBtn.addEventListener('click', () => {
+        const verbSelect = document.querySelector('select[name="verb"]');
+        const verbValue = verbSelect.value;
+        const verbText = verbSelect.options[verbSelect.selectedIndex].text;
+        const quantityInput = document.querySelector('input[name="quantity"]');
+        const quantityValue = quantityInput.value;
+        const chemicalSelect = document.querySelector('select[name="chemical"]');
+        if (chemicalSelect.value.length === 0) {
+            chemicalSelect.value = '';
+        }
+        const chemicalValue = chemicalSelect.value;
+        const chemicalText = chemicalSelect.options[chemicalSelect.selectedIndex].text;
+        const equipmentSelect = document.querySelector('select[name="equipment"]');
+        const equipmentValue = equipmentSelect.value;
+        const equipmentText = equipmentSelect.options[equipmentSelect.selectedIndex].text;
+
+        if (verbValue || quantityValue || chemicalValue || equipmentValue) {
+            const li = document.createElement('li');
+            li.textContent = `${verbText} ${quantityValue} ${chemicalText} ${equipmentText}`;
+            stepsList.appendChild(li);
+            stepsValues.push(`${verbValue},${quantityValue},${chemicalValue},${equipmentValue}`);
+            stepsInput.value = stepsValues.join(';');
+            verbSelect.value = '';
+            quantityInput.value = '';
+            chemicalSelect.value = '';
+            equipmentSelect.value = '';
+        }
+
+    });
+</script>
 {% endblock %}
