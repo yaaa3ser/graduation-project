@@ -23,7 +23,7 @@
               <!-- Add more options here -->
           </select>
           <div class="input-group-append">
-              <button type="button" style="background-color: #5D3891;" id="add-equipment" class="btn btn-primary">Add</button>
+              <button type="button" style="background-color: #2193b0;" id="add-equipment" class="btn btn-primary">Add</button>
           </div>
       </div>
       <ul id="equipment-list"></ul>
@@ -41,7 +41,7 @@
               <!-- Add more options here -->
           </select>
           <div class="input-group-append">
-              <button type="button" style="background-color: #5D3891;" id="add-chemical" class="btn btn-primary">Add</button>
+              <button type="button" style="background-color: #2193b0;" id="add-chemical" class="btn btn-primary">Add</button>
           </div>
       </div>
       <ul id="chemical-list"></ul>
@@ -78,7 +78,7 @@
             <!-- Add more options here -->
         </select>
         <div class="input-group-append">
-            <button type="button" style="background-color: #5D3891;" id="add-step" class="btn btn-primary">Add</button>
+            <button type="button" style="background-color: #2193b0;" id="add-step" class="btn btn-primary">Add</button>
         </div>
     </div>
     <ul id="step-list"></ul>
@@ -95,7 +95,7 @@
         <input type="text" class="form-control" id="conclusion" name="conclusion">
     </div> 
     </br>
-    <button type="submit" class="btn btn-primary col-md-9 mt-2" style="height: 50px; font-size: 1.2em; background-color: #5D3891;">Save</button>
+    <button type="submit" class="btn btn-primary col-md-9 mt-2" style="height: 50px; font-size: 1.2em; background-color: #2193b0;">Save</button>
 
 </form>
 </div>
@@ -152,10 +152,10 @@
             chemicalSelect.value = '';
         }
         const chemicalValue = chemicalSelect.value;
-        const chemicalText = chemicalSelect.options[chemicalSelect.selectedIndex].text;
+        const chemicalText = chemicalValue ? chemicalSelect.options[chemicalSelect.selectedIndex].text : "";
         const equipmentSelect = document.querySelector('select[name="equipment"]');
         const equipmentValue = equipmentSelect.value;
-        const equipmentText = equipmentSelect.options[equipmentSelect.selectedIndex].text;
+        const equipmentText = equipmentValue ? equipmentSelect.options[equipmentSelect.selectedIndex].text : "";
 
         if (verbValue || quantityValue || chemicalValue || equipmentValue) {
             const li = document.createElement('li');

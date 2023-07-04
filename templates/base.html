@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css">
 
 </head>
-<body >
-  <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#5D3891">
+<body style="background-color: #E9F1FA;" class="gradient-bg">
+  <nav class="navbar navbar-expand-lg navbar-dark gradient-sm">
+    <img src="https://eng-azhar.net/images/logo.png" alt="eng_azhar" width="200" height="100">
     <div class="container" >
       <a class="navbar-brand" href="{% url 'experiments_list' %}">Experiments</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +33,14 @@
     {% block content %}
     {% endblock %}
   </main>
-
+  <style>
+    .gradient-bg {
+      background: linear-gradient(to left, #2193b0, #ffc3a0);
+    }
+    .gradient-sm {
+      background: linear-gradient(to left, #2193b0, #bdc3c7);
+    }
+  </style>
   <!-- Bootstrap JavaScript CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>

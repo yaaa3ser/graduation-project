@@ -71,7 +71,7 @@ class Steps(models.Model):
     verb = models.CharField(max_length=100, choices=VERBS)
     quantity = models.IntegerField(blank=True, null=True)
     chemical = models.CharField(max_length=100, choices=CHEMICALS, blank=True, null=True)
-    equipment = models.CharField(max_length=100, choices=EQUIPMENT)
+    equipment = models.CharField(max_length=100, choices=EQUIPMENT, blank=True, null=True)
 
     def __str__(self) -> str:
         if not self.quantity:
@@ -80,14 +80,19 @@ class Steps(models.Model):
             self.chemical = ''
         if not self.equipment:
             self.equipment = ''
-        return f'{self.verb} {self.quantity} {self.chemical} to {self.equipment}'
+        return f'{self.verb} {self.quantity} {self.chemical} {self.equipment}'
     
     @property
     def formatted_step(self) -> str:
         if not self.quantity:
             self.quantity = ''
+        else:
+            self.quantity = f'{self.quantity} ml'
         if not self.chemical:
             self.chemical = ''
         if not self.equipment:
             self.equipment = ''
-        return f'{self.verb} {self.quantity} {self.chemical} to {self.equipment}'
+        if self.equipment and self.chemical:
+            self.equipment = f'to {self.equipment}'
+            self.chemical = f'from {self.chemical}'
+        return f'{self.verb} {self.quantity} {self.chemical} {self.equipment}'

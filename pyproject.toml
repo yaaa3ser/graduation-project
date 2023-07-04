@@ -12,6 +12,7 @@ django = "^4.2"
 drf-yasg = "^1.21.5"
 djangorestframework = "^3.14.0"
 django-extensions = "^3.2.1"
+faker = "^18.9.0"
 
 
 [build-system]

@@ -6,9 +6,7 @@ from .serializers import ExperimentSerializer
 from rest_framework import generics
 from drf_yasg.utils import swagger_auto_schema
 
-class El8alyView(View):
-    def get(self, request):
-        return render(request, '3mmena.html')
+
 class ExperimentCreateView(View):
     def get(self, request):
         form = ExperimentForm()
@@ -24,12 +22,12 @@ class ExperimentCreateView(View):
             equipment_objects = [Equipment(experiment=experiment, name=name) for name in equipment_names[0].split(',') if name]
             chemicals_objects = [Chemicals(experiment=experiment, name=name) for name in chemicals_names[0].split(',') if name]
             steps = steps[0].split(';')
-            print(steps)
+            # print(steps)
             steps_objects = []
             for step in steps:
                 if step:
                     step = step.split(',')
-                    step_object = Steps(experiment=experiment, verb=step[0], quantity=step[1], chemical=step[2], equipment=step[3])
+                    step_object = Steps(experiment=experiment, verb=step[0], quantity=step[1] if step[1] else 0, chemical=step[2], equipment=step[3])
                     steps_objects.append(step_object)
             experiment.save()
             Equipment.objects.bulk_create(equipment_objects)
