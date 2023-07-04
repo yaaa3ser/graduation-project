@@ -4,12 +4,12 @@
     <form method="post">
     {% csrf_token %}
     <div class="form-group col-md-9">
-        <label for="name">Experiment Name:</label>
+        <label for="name" class="axax">Experiment Name:</label>
         <input type="text" class="form-control" id="name" name="name">
     </div>
     </br>
     <div class="form-group col-md-9">
-      <label for="equipment_select">Equipment:</label>
+      <label for="equipment_select" class="axax">Equipment:</label>
       <div class="input-group">
           <select name="equipment_select" id="equipment_select" class="form-control">
               <option value="">Choose equipment...</option>
@@ -31,7 +31,7 @@
   </div>
     </br>
   <div class="form-group col-md-9">
-      <label for="chemical_select">Chemicals:</label>
+      <label for="chemical_select" class="axax">Chemicals:</label>
       <div class="input-group">
           <select name="chemical_select" id="chemical_select" class="form-control">
               <option value="">Choose chemical...</option>
@@ -49,7 +49,7 @@
   </div>
     </br>
   <div class="form-group col-md-9">
-    <label for="step">Steps:</label>
+    <label for="step" class="axax">Steps:</label>
     <div class="input-group">
         <select name="verb" class="form-control">
             <option value="">Choose verb...</option>
@@ -86,12 +86,12 @@
 </div>
     </br>
     <div class="form-group col-md-9">
-        <label for="observation">Observation:</label>
+        <label for="observation" class="axax">Observation:</label>
         <input type="text" class="form-control" id="observation" name="observation">
     </div>  
     </br>
     <div class="form-group col-md-9">
-        <label for="conclusion">Conclusion:</label>
+        <label for="conclusion" class="axax">Conclusion:</label>
         <input type="text" class="form-control" id="conclusion" name="conclusion">
     </div> 
     </br>
@@ -99,7 +99,14 @@
 
 </form>
 </div>
-
+    <style>
+        .axax{
+            color: #0E2954;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    </style>
   <script>
     const addEquipmentBtn = document.querySelector('#add-equipment');
     const addChemicalBtn = document.querySelector('#add-chemical');

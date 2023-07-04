@@ -15,14 +15,14 @@
   <nav class="navbar navbar-expand-lg navbar-dark gradient-sm">
     <img src="https://eng-azhar.net/images/logo.png" alt="eng_azhar" width="200" height="100">
     <div class="container" >
-      <a class="navbar-brand" href="{% url 'experiments_list' %}">Experiments</a>
+      <a class="exex" href="{% url 'experiments_list' %}">Experiments</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'experiment_create' %}">Create Experiment</a>
+            <a class="exex" href="{% url 'experiment_create' %}">Create Experiment</a>
           </li>
         </ul>
       </div>
@@ -40,6 +40,18 @@
     .gradient-sm {
       background: linear-gradient(to left, #2193b0, #bdc3c7);
     }
+    .exex {
+      color: #1E4778;
+      text-decoration: none;
+      font-size: 25px;
+      font-weight: 600;
+      padding: 5px 15px; /* Add space around the text */
+      margin-left: -95px;
+      border: 2px solid #1E4778; /* Update border color */
+      border-radius: 100px;
+      background-color: #ffbd03; /* Update background color */
+    }
+    
   </style>
   <!-- Bootstrap JavaScript CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
