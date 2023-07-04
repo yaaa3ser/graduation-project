@@ -27,6 +27,35 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# settings.py
+# settings.py
+CORS_ALLOWED_ORIGINS = [
+    "https://bld-chatbot.azurewebsites.net",'*'
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+# settings.py
+CORS_ORIGIN_WHITELIST = [
+    'https://bld-chatbot.azurewebsites.net',
+    # Add any other domains that should be allowed to make CORS requests.
+]
+# settings.py
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_COOKIE_SECURE = False
 
 # Application definition
 
@@ -121,7 +150,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [BASE_DIR / 'staticfiles']
+STATICFILES_DIRS = [BASE_DIR / 'staticfiles','/workspace/staticfiles']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
