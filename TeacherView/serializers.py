@@ -16,10 +16,10 @@ class ChemicalsSerializer(serializers.ModelSerializer):
 class StepsSerializer(serializers.ModelSerializer):
     verb = serializers.CharField()
     equipment = serializers.CharField()
-    chemicals = serializers.CharField()
+    chemical = serializers.CharField()
     class Meta:
         model = Steps
-        fields = ['verb', 'equipment', 'chemicals']
+        fields = ['verb', 'equipment', 'chemical']
 class ExperimentSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     equipments = EquipmentSerializer(many=True)
@@ -31,4 +31,3 @@ class ExperimentSerializer(serializers.ModelSerializer):
         model = Experiment
         fields = '__all__'
         
-
