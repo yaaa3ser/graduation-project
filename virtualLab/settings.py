@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TeacherView',
+    'authentication',
     'rest_framework',
     'drf_yasg',
     'django_extensions',
