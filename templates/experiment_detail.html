@@ -1,70 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="container">
-    <h1 class="mb-4">{{ experiment.name }}</h1>
-    <div class="d-flex">
+<div class="container">
+  <h1 class="mb-4">{{ experiment.name }}</h1>
+  <div class="d-flex">
     <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body card-title">
-        <h4>Equipment: </h4>
-        {% if equipment %}
-          <ul class="list-group">
+      <div class="card bg-transparent mb-4">
+        <div class="card-body">
+          <h4>Equipment: </h4>
+          {% if equipment %}
+          <ul class="list-group list-group-flush bg-transparent">
             {% for e in equipment %}
-              <li class="list-group-item">{{ e }}</li>
+            <li class="list-group-item bg-transparent">{{ e }}</li>
             {% endfor %}
           </ul>
-        {% else %}
-          <p>No equipment found.</p>
-        {% endif %}
-      </div>
-      </div>
-    </div>
-      <div class="col-md-4" style="margin-left:10px;">
-        <div class="card mb-4">
-          <div class="card-body card-title">
-          <h4 class="card-title">Chemicals: </h4>
-
-          {% if chemicals %}
-            <ul class="list-group card-title">
-              {% for c in chemicals %}
-                <li class="list-group-item">{{ c }}</li>
-              {% endfor %}
-            </ul>
           {% else %}
-            <p>No chemicals found.</p>
+          <p>No equipment found.</p>
           {% endif %}
-          </div>
         </div>
       </div>
     </div>
-      <div class="col-md-8">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h4 class="card-title">Steps: </h4>
-            {% if steps %}
-            <ul class="list-group card-title">
-              {% for s in steps %}
-                <li class="list-group-item">{{ s }}</li>
-              {% endfor %}
-            </ul>
+    <div class="col-md-4" style="margin-left:10px;">
+      <div class="card bg-transparent mb-4">
+        <div class="card-body">
+          <h4 class="card-title">Chemicals: </h4>
+          {% if chemicals %}
+          <ul class="list-group list-group-flush bg-transparent">
+            {% for c in chemicals %}
+            <li class="list-group-item bg-transparent">{{ c }}</li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p>No chemicals found.</p>
           {% endif %}
-          </div>
         </div>
-        <div class="card mb-4">
-          <div class="card-body">
-            <h4 class="card-title">Observation:</h4>
-            <p class="card-text">{{ experiment.observation }}</p>
-          </div>
-        </div>
-        <div class="card mb-4">
-          <div class="card-body">
-            <h4 class="card-title">Conclusion: </h4>
-            <p class="card-text">{{ experiment.conclusion }}</p>
-          </div>
-        </div>
-        
       </div>
     </div>
   </div>
+  <div class="col-md-8">
+    <div class="card bg-transparent mb-4">
+      <div class="card-body">
+        <h4 class="card-title">Steps: </h4>
+        {% if steps %}
+        <ul class="list-group list-group-flush bg-transparent">
+          {% for s in steps %}
+          <li class="list-group-item bg-transparent">{{ s }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+    <div class="card bg-transparent mb-4">
+      <div class="card-body">
+        <h4 class="card-title">Observation:</h4>
+        <p class="card-text">{{ experiment.observation }}</p>
+      </div>
+    </div>
+    <div class="card bg-transparent mb-4">
+      <div class="card-body">
+        <h4 class="card-title">Conclusion: </h4>
+        <p class="card-text">{{ experiment.conclusion }}</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

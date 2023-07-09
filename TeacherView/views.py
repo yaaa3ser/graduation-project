@@ -5,9 +5,11 @@ from .forms import ExperimentForm
 from .serializers import ExperimentSerializer
 from rest_framework import generics
 from drf_yasg.utils import swagger_auto_schema
+from django.contrib.auth.mixins import LoginRequiredMixin 
 
+class ExperimentCreateView(LoginRequiredMixin, View):
+    login_url = '/auth/login/'
 
-class ExperimentCreateView(View):
     def get(self, request):
         form = ExperimentForm()
         return render(request, 'create.html', {'form': form})
@@ -38,7 +40,8 @@ class ExperimentCreateView(View):
 
 
 
-class ExperimentDetailView(View):
+class ExperimentDetailView(LoginRequiredMixin, View):
+    login_url = '/auth/login/'
     def get(self, request, pk):
         experiment = get_object_or_404(Experiment, pk=pk)
         equipment = Equipment.objects.filter(experiment=experiment)
