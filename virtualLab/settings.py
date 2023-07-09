@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['*']
 # settings.py
 # settings.py
 CORS_ALLOWED_ORIGINS = [
-    "https://bld-chatbot.azurewebsites.net","*" , " http://24.199.120.99"
+    "*" , " http://24.199.120.99"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -48,9 +48,11 @@ CORS_ALLOW_HEADERS = [
 ]
 # settings.py
 CORS_ORIGIN_WHITELIST = [
-    'https://bld-chatbot.azurewebsites.net',
+    'http://24.199.120.99',
     # Add any other domains that should be allowed to make CORS requests.
 ]
+CSRF_TRUSTED_ORIGINS = ['http://24.199.120.99']
+
 # settings.py
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
