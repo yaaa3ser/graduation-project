@@ -51,9 +51,20 @@ class ExperimentDetailView(LoginRequiredMixin, View):
         chemical_names = [c.name for c in chemical]
         steps_names = [s.formatted_step for s in steps]
         return render(request, 'experiment_detail.html', {'experiment': experiment, 'equipment': equipment_names, 'chemicals': chemical_names, 'steps': steps_names})
+    
 
 class ExperimentListView(View):
     def get(self, request):
+        data = request.GET
+        print(data)
+        exp_id = data.get('id')
+        method = data.get('_method')
+        print(exp_id, method)
+        if method == '_delete' and exp_id:
+            try:
+                experiment = Experiment.objects.get(id=exp_id).delete()
+            except:
+                pass
         experiments = Experiment.objects.all()
         return render(request, 'experiment_list.html', {'experiments': experiments})
     

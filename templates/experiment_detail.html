@@ -63,5 +63,14 @@
       </div>
     </div>
   </div>
+  <form action = "{% url 'experiments_list'%}">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ experiment.pk }}" />
+    <input type="hidden" name="_method" value="_delete" />
+
+    <button type="submit" class="btn btn-danger d-flex" style="margin: 10px">
+      Delete
+    </button>
+  </form>
 </div>
 {% endblock %}
