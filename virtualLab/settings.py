@@ -52,8 +52,8 @@ CORS_ORIGIN_WHITELIST = [
     # Add any other domains that should be allowed to make CORS requests.
 ]
 # settings.py
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_COOKIE_SECURE = False
 
